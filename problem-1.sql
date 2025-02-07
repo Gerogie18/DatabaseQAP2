@@ -60,7 +60,6 @@ VALUES
     ('physics 101', 'An introduction to the basic principles of physics.', 2);
 
 -- Insert enrollments (15)
-INSERT INTO enrollments (student_id, course_id, enrollment_date)
 -- Insert Enrollments
 INSERT INTO enrollments (student_id, course_id, enrollment_date)
 VALUES
@@ -79,4 +78,19 @@ VALUES
     (5, 3, '2025-01-01'),  
     (5, 2, '2025-01-01'), 
     (5, 1, '2025-01-01');  
+
+-- SQL QUERIES
+-- full namees of students
+SELECT CONCAT(students.first_name, ' ', students.last_name) AS full_name
+FROM enrollments;
+JOIN courses ON enrollments.course_id = courses.id
+JOIN students ON enrollments.student_id = students.id;
+where courses.course_name = 'Physics 101';
+
+-- retrive a list of courses as well as professors full name
+SELECT 
+    course_name, 
+    CONCAT(professors.first_name, ' ', professors.last_name) AS professor_name
+FROM courses
+JOIN professors ON courses.professor_id = professors.id;
 
