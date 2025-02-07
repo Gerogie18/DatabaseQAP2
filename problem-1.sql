@@ -57,3 +57,26 @@ VALUES
     ('The Science of Reanimation', 'A study of the scientific principles behind bringing the dead back to life, with a focus on practical applications.', 2),
     ('Time Warp Theory and Practice', 'An examination of the physics and philosophy of time travel, with a focus on the Time Warp as a case study.', 3),
     ('Criminology of the Damned', 'A survey of the darker corners of human nature, with a focus on the crimes and misdeeds of the denizens of Transylvania.', 4);
+    ('physics 101', 'An introduction to the basic principles of physics.', 2);
+
+-- Insert enrollments (15)
+INSERT INTO enrollments (student_id, course_id, enrollment_date)
+-- Insert Enrollments
+INSERT INTO enrollments (student_id, course_id, enrollment_date)
+VALUES
+    (1, 1, '2025-01-01'),  
+    (1, 2, '2025-01-01'),  
+    (1, 5, '2025-01-01'),  
+    (2, 3, '2025-01-01'),  
+    (2, 4, '2025-01-01'),  
+    (2, 1, '2025-01-01'),  
+    (3, 2, '2025-01-01'),  
+    (3, 5, '2025-01-01'),  
+    (3, 3, '2025-01-01'),  
+    (4, 1, '2025-01-01'),  
+    (4, 4, '2025-01-01'), 
+    (4, 2, '2025-01-01'),
+    (5, 3, '2025-01-01'),  
+    (5, 2, '2025-01-01'), 
+    (5, 1, '2025-01-01');  
+
