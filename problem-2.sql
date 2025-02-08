@@ -98,3 +98,11 @@ UPDATE products
 SET stock_quantity = stock_quantity - 2
 WHERE id = 2;
 
+--DELETE DATA
+--remove order
+DELETE FROM orders
+WHERE id = 6;
+--remove order_items
+DELETE FROM order_items
+WHERE order_id = 6;
+
