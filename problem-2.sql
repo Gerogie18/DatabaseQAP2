@@ -4,7 +4,7 @@ CREATE TABLE products (
     id INT PRIMARY KEY,
     product_name VARCHAR(150) NOT NULL,
     price DECIMAL(10,2) NOT NULL
-    stock_quantity DECIMAL(10,2) NOT NULL
+    stock_quantity INT NOT NULL
 )
 
 --Create customer table
@@ -33,11 +33,11 @@ CREATE TABLE order_items (
 -- Insert products (5)
 INSERT INTO products (id, product_name, price, stock_quantity)
 VALUES
-    (1, 'Audrey II (Small)', 9.99, 10.0),
-    (2, 'Skid Row Souvenirs', 4.99, 20.0),
-    (3, 'Mushnik's Flower Shop T-Shirt', 14.99, 5.0),
-    (4, 'Feed Me (Supplement)', 19.99, 8.0),
-    (5, 'Dentist's Drill', 29.99, 3.0);
+    (1, 'Audrey II (Small)', 9.99, 10),
+    (2, 'Skid Row Souvenirs', 4.99, 20),
+    (3, 'Mushnik's Flower Shop T-Shirt', 14.99, 5),
+    (4, 'Feed Me (Supplement)', 19.99, 8),
+    (5, 'Dentist's Drill', 29.99, 3);
 
 -- Insert customers (4)
 INSERT INTO customers (id, first_name, last_name, email)
@@ -92,9 +92,9 @@ INSERT INTO orders (id, customer_id, order_date)
 VALUES (6, 2, '2025-02-07');
 --add order items
 INSERT INTO order_items (order_id, product_id, quantity, price)
-VALUES (6, 2, 1);
+VALUES (6, 2, 2);
 --update stock quantity
 UPDATE products
-SET stock_quantity = stock_quantity - 1
+SET stock_quantity = stock_quantity - 2
 WHERE id = 2;
 
