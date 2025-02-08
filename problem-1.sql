@@ -98,3 +98,7 @@ JOIN professors ON courses.professor_id = professors.id;
 UPDATE students.email = 'Eddie.quinlan@meatloaf.com'
 WHERE students.first_name = 'Eddie';
 
+-- REMOVE student from one of their courses
+DELETE FROM enrollments
+WHERE student_id = 5 AND course_id = 1;
+
