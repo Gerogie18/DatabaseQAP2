@@ -64,8 +64,6 @@ VALUES
     (1, 3, 1, 14.99),
     (2, 2, 2, 4.99),
     (2, 4, 1, 19.99),
-    (3, 5, 1, 29.99),
-    (4, 1, 1, 9.99),
     (4, 2, 1, 4.99),
     (5, 3, 1, 14.99),
     (5, 4, 1, 19.99);
@@ -86,3 +84,17 @@ FROM orders
 JOIN order_items ON orders.id = order_items.order_id
 JOIN products ON order_items.product_id = products.id
 WHERE orders.customer_id = 1;
+
+--UPDATE DATA
+--add an order
+INSERT INTO orders (id, customer_id, order_date)
+VALUES (6, 2, '2025-02-07');
+--add order items
+INSERT INTO order_items (order_id, product_id, quantity, price)
+VALUES (6, 2, 1);
+--update stock quantity
+UPDATE products
+SET stock_quantity = stock_quantity - 1
+WHERE id = 2;
+
+--DELETE DATA
