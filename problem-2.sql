@@ -1,13 +1,13 @@
 --CREATE TABLES
---Create product table
+-- Create product table
 CREATE TABLE products (
     id INT PRIMARY KEY,
     product_name VARCHAR(150) NOT NULL,
-    price DECIMAL(10,2) NOT NULL
-    stock_quantity INT NOT NULL
+    price DECIMAL(10,2) NOT NULL,
+    stock_quantity INT NOT NULL,
 )
 
---Create customer table
+-- Create customer table
 CREATE TABLE customers (
     id INT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -21,12 +21,12 @@ CREATE TABLE orders (
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
 )
---Create order_items table
+-- Create order_items table
 CREATE TABLE order_items (
     order_id INT NULL REFERENCES orders(id),
     product_id INT NULL REFERENCES products(id),
     quantity INT NOT NULL,
-    PRIMARY KEY (order_id, product_id)
+    PRIMARY KEY (order_id, product_id),
 )
 
 --INSERT DATA
@@ -56,7 +56,7 @@ VALUES
     (4, 1, '2025-02-03'),
     (5, 4, '2025-02-04');
 
---insert order_items (5) with at least 2 items
+-- Insert order_items (5) with at least 2 items
 INSERT INTO order_items (order_id, product_id, quantity, price)
 VALUES
     (1, 1, 1),
@@ -70,16 +70,16 @@ VALUES
     (5, 4, 1);
 
 --SQL QUERIES
--- retrieve names and stock quantities of all products
+-- Retrieve names and stock quantities of all products
 SELECT product_name, stock_quantity
 FROM products;
 
---retreive product names and quantities for orders placed
+-- Retreive product names and quantities for orders placed
 SELECT products.product_name, order_items.quantity
 FROM products
 JOIN order_items ON products.id = order_items.product_id;
 
--- retrive orders from customer including product ID, name and quantity
+-- Retrive orders from customer including product ID, name and quantity
 SELECT orders.id, products.id, products.product_name, order_items.quantity
 FROM orders
 JOIN order_items ON orders.id = order_items.order_id
@@ -87,22 +87,22 @@ JOIN products ON order_items.product_id = products.id
 WHERE orders.customer_id = 1;
 
 --UPDATE DATA
---add an order
+-- Add an order
 INSERT INTO orders (id, customer_id, order_date)
 VALUES (6, 2, '2025-02-07');
---add order items
+-- Add order items
 INSERT INTO order_items (order_id, product_id, quantity, price)
 VALUES (6, 2, 2);
---update stock quantity
+-- Update stock quantity
 UPDATE products
 SET stock_quantity = stock_quantity - 2
 WHERE id = 2;
 
 --DELETE DATA
---remove order
+-- Remove order
 DELETE FROM orders
 WHERE id = 6;
---remove order_items
+-- Remove order_items
 DELETE FROM order_items
 WHERE order_id = 6;
 
