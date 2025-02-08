@@ -94,3 +94,7 @@ SELECT
 FROM courses
 JOIN professors ON courses.professor_id = professors.id;
 
+-- UPDATE student email
+UPDATE students.email = 'Eddie.quinlan@meatloaf.com'
+WHERE students.first_name = 'Eddie';
+
