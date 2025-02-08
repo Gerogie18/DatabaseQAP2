@@ -69,3 +69,20 @@ VALUES
     (4, 2, 1, 4.99),
     (5, 3, 1, 14.99),
     (5, 4, 1, 19.99);
+
+--SQL QUERIES
+-- retrieve names and stock quantities of all products
+SELECT product_name, stock_quantity
+FROM products;
+
+--retreive product names and quantities for orders placed
+SELECT products.product_name, order_items.quantity
+FROM products
+JOIN order_items ON products.id = order_items.product_id;
+
+-- retrive orders from customer including product ID, name and quantity
+SELECT orders.id, products.id, products.product_name, order_items.quantity
+FROM orders
+JOIN order_items ON orders.id = order_items.order_id
+JOIN products ON order_items.product_id = products.id
+WHERE orders.customer_id = 1;
