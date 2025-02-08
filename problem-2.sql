@@ -30,3 +30,42 @@ CREATE TABLE order_items (
     PRIMARY KEY (order_id, product_id)
 )
 
+--INSERT DATA
+-- Insert products (5)
+INSERT INTO products (id, product_name, price, stock_quantity)
+VALUES
+    (1, 'Audrey II (Small)', 9.99, 10.0),
+    (2, 'Skid Row Souvenirs', 4.99, 20.0),
+    (3, 'Mushnik's Flower Shop T-Shirt', 14.99, 5.0),
+    (4, 'Feed Me (Supplement)', 19.99, 8.0),
+    (5, 'Dentist's Drill', 29.99, 3.0);
+
+-- Insert customers (4)
+INSERT INTO customers (id, first_name, last_name, email)
+VALUES
+    (1, 'Seymour', 'Krelboyne', 'seymour.krelboyne@skidrow.com'),
+    (2, 'Audrey', 'I', 'audrey.i@skidrow.com'),
+    (3, 'Orin', 'Scrivello', 'orin.scrivello@dentist.com'),
+    (4, 'Crystal', 'Shelley', 'crystal.shelley@skidrow.com');
+
+-- Insert orders (5)
+INSERT INTO orders (id, customer_id, order_date)
+VALUES
+    (1, 1, '2025-01-04'),
+    (2, 2, '2025-01-07'),
+    (3, 3, '2025-01-17'),
+    (4, 1, '2025-02-03'),
+    (5, 4, '2025-02-04');
+
+--insert order_items (5) with at least 2 items
+INSERT INTO order_items (order_id, product_id, quantity, price)
+VALUES
+    (1, 1, 1, 9.99),
+    (1, 3, 1, 14.99),
+    (2, 2, 2, 4.99),
+    (2, 4, 1, 19.99),
+    (3, 5, 1, 29.99),
+    (4, 1, 1, 9.99),
+    (4, 2, 1, 4.99),
+    (5, 3, 1, 14.99),
+    (5, 4, 1, 19.99);
