@@ -1,5 +1,5 @@
---Create TABLES
--- Create Student Table
+--CREATE TABLES
+-- Create student table
 CREATE TABLE students (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE students (
     school_enrollment_date Date NOT NULL,
 )
 
--- Create Professor Table
+-- Create professor table
 CREATE TABLE professors (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE professors (
     department VARCHAR(100) NOT NULL,
 )
 
--- Create Course Table
+-- Create course table
 CREATE TABLE courses (
     id SERIAL PRIMARY KEY,
     course_name VARCHAR(100) NOT NULL,
@@ -32,8 +32,8 @@ CREATE TABLE enrollments (
     PRIMARY KEY (student_id, course_id)
 )
 
--- INSERT Data
--- Insert Students (5)
+-- INSERT DATA
+-- Insert students (5)
 INSERT INTO students (first_name, last_name, email, school_enrollment_date)
 VALUES
     ('Brad', 'Majors', 'brad.majors@dentonhigh.edu', '2020-09-01'),
@@ -42,7 +42,7 @@ VALUES
     ('Columbia', 'Cantrell', 'columbia.cantrell@transylvaniaschool.edu', '2022-01-01'),
     ('Eddie', 'Quinlan', 'eddie.quinlan@deliveryboy.edu', '2021-06-01');
 
--- Insert Professors (4)
+-- Insert professors (4)
 INSERT INTO professors (first_name, last_name, department)
 VALUES
     ('Frank-N-Furter', 'PhD', 'Theater'),
@@ -60,7 +60,6 @@ VALUES
     ('physics 101', 'An introduction to the basic principles of physics.', 2);
 
 -- Insert enrollments (15)
--- Insert Enrollments
 INSERT INTO enrollments (student_id, course_id, enrollment_date)
 VALUES
     (1, 1, '2025-01-01'),  
@@ -80,31 +79,31 @@ VALUES
     (5, 1, '2025-01-01');  
 
 -- SQL QUERIES
--- full namees of students
+-- full names of students
 SELECT CONCAT(students.first_name, ' ', students.last_name) AS full_name
 FROM enrollments;
 JOIN courses ON enrollments.course_id = courses.id
 JOIN students ON enrollments.student_id = students.id;
 WHERE courses.course_name = 'Physics 101';
 
--- retrive a list of courses as well as professors full name
+-- Retrive a list of courses as well as professors full name
 SELECT 
     course_name, 
     CONCAT(professors.first_name, ' ', professors.last_name) AS professor_name
 FROM courses
 JOIN professors ON courses.professor_id = professors.id;
 
--- retrive all courses with students enrolled
+-- Retrive all courses with students enrolled
 SELECT course.name
 from enrollments
 JOIN courses ON enrollments.course_id = courses.id;
 WHERE enrollments.student_id = 1;
 
--- UPDATE student email
+-- Update student email
 UPDATE students.email = 'Eddie.quinlan@meatloaf.com'
 WHERE students.first_name = 'Eddie';
 
--- REMOVE student from one of their courses
+-- Remove student from one of their courses
 DELETE FROM enrollments
 WHERE student_id = 5 AND course_id = 1;
 
