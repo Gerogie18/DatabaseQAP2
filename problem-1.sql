@@ -81,9 +81,9 @@ VALUES
 -- SQL QUERIES
 -- full names of students
 SELECT CONCAT(students.first_name, ' ', students.last_name) AS full_name
-FROM enrollments;
+FROM enrollments
 JOIN courses ON enrollments.course_id = courses.id
-JOIN students ON enrollments.student_id = students.id;
+JOIN students ON enrollments.student_id = students.id
 WHERE courses.course_name = 'Physics 101';
 
 -- Retrive a list of courses as well as professors full name
@@ -96,7 +96,7 @@ JOIN professors ON courses.professor_id = professors.id;
 -- Retrive all courses with students enrolled
 SELECT course.name
 from enrollments
-JOIN courses ON enrollments.course_id = courses.id;
+JOIN courses ON enrollments.course_id = courses.id
 WHERE enrollments.student_id = 1;
 
 -- Update student email
