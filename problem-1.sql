@@ -85,7 +85,7 @@ SELECT CONCAT(students.first_name, ' ', students.last_name) AS full_name
 FROM enrollments;
 JOIN courses ON enrollments.course_id = courses.id
 JOIN students ON enrollments.student_id = students.id;
-where courses.course_name = 'Physics 101';
+WHERE courses.course_name = 'Physics 101';
 
 -- retrive a list of courses as well as professors full name
 SELECT 
@@ -93,6 +93,12 @@ SELECT
     CONCAT(professors.first_name, ' ', professors.last_name) AS professor_name
 FROM courses
 JOIN professors ON courses.professor_id = professors.id;
+
+-- retrive all courses with students enrolled
+SELECT course.name
+from enrollments
+JOIN courses ON enrollments.course_id = courses.id;
+WHERE enrollments.student_id = 1;
 
 -- UPDATE student email
 UPDATE students.email = 'Eddie.quinlan@meatloaf.com'
